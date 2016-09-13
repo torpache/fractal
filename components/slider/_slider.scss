@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 11:55:47 AM
+    Author     : john
+*/
+
+.slider-holder {
+            width: 90%;
+    margin-left: 3%;
+    position: relative;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    }
+    .slider-slide {
+    width: 100%;
+    height: 15px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    }
+    .slider-cursor {
+        position: absolute;
+        top: -4px;
+    left: 50%;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background:#3399FF;
+    }
+    .slider-endcursor {
+    position: absolute;
+        top: -4px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background:#BDBDBD;
+    }
+    .slider-begin {
+    left: 0;
+    }
+    .slider-end {
+    left:-webkit-calc(100% - 23px);
+    left:-moz-calc(100% - 23px);
+    left:calc(100% - 23px);
+    }
+    .slider-mouse-trap-slide {
+    position: absolute;
+    top:0;
+    left: 23px;
+    width:-webkit-calc(100% - 46px);
+    width:-moz-calc(100% - 46px);
+    width:calc(100% - 46px);
+    height: 15px;
+    cursor: pointer;
+    }
+    .slider-mouse-trap-begin {
+    position: absolute;
+    top:0;
+    left: 0;
+    width:23px;
+    height: 15px;
+    cursor: pointer;
+    }
+    .slider-mouse-trap-end {
+    position: absolute;
+    top:0;
+    left:-webkit-calc(100% - 23px);
+    left:-moz-calc(100% - 23px);
+    left:calc(100% - 23px);
+    width:23px;
+    height: 15px;
+    cursor: pointer;
+    }

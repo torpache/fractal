@@ -1,0 +1,57 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 12:02:36 PM
+    Author     : john
+*/
+.color-grad{
+    float:left;
+    width:90%;
+}
+.color-grad-histogram {
+          width: 90%;
+          margin-left: 3%;
+          height: 40px;
+          }
+          .color-grad-mini-canvas {
+    width: 90%;
+    margin-left: 3%;
+        height: 30px;
+    border-radius: 15px;
+    }
+    .color-grad-color-box-holder {
+              height: 40px;
+              width: 90%;
+                  margin-left: 3%;
+    margin-top: 5px;
+          }
+          .color-grad-arrow-right {
+    position: absolute;
+    top: 23%;
+    left: 43%;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #3399FF;
+    transition: border 0.3s;
+}
+
+.color-grad-color-button{
+        float: left;
+    width: 10%;
+    margin-top: 5%;
+    padding-bottom: 10%;
+    margin-left: -2%;
+    /* height: 145px; */
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+.color-grad-color-button:hover .color-grad-arrow-right{
+    border-left: 20px solid #2161a0;
+}

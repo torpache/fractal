@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <title>Fractal Generator</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta property="og:title" content="Fractal Maker"/>
+<meta property="og:image" content="http://www.collettjd.com/fractal/images/halfmandelwhite.png"/>
+<meta property="og:site_name" content="Fractal Maker"/>
+<meta property="og:description" content="An easy to use fractal generator with function input, a variety of coloring methods, and zooming ability."/>
+
+      <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fractal Maker">
+<meta name="twitter:description" content="An easy to use fractal generator with function input, a variety of coloring methods, and zooming ability">
+<meta name="twitter:image" content="http://www.collettjd.com/fractal/images/halfmandelwhite.png">
+
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/2.4.2/math.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML.js"></script>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="stylesheets/menubutton.css">
+      <link rel="stylesheet" href="stylesheets/textinput.css">
+      <link rel="stylesheet" href="stylesheets/fractalstyle.css">
+    <script src="javascripts/fractal.js"></script>
+      <script src="components/color-picker/angular-color-picker.js"></script>
+      <script src="components/slider/slider.js"></script>
+      <script src="components/color-box/color-box.js"></script>
+      <script src="components/color-gradient-maker/color-gradient-maker.js"></script>
+      <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+      <script src="components/clickoutside.directive.js"></script>
+      <script src="javascripts/analytics.js"></script>
+      <script>
+          MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+      </script>
+   </head>
+  <body ng-app="fractalMaker" >
+      <div class="small-screen">This app is currently only usable for larger screens and more powerful devices.</div>
+      <div class="large-screen"> 
+      <ui-view></ui-view>
+
+      
+      <script type="text/ng-template" id="/home.html">
+     <div class="menu-left">
+        <ul>
+            <li><i class="fa fa-cogs" ng-click="Ctrl.active=Ctrl.menuToggle(Ctrl.active,'options')" ng-class="{'active-fa':Ctrl.active ==='options'}"></i></li>
+          <li><i class="fa fa-map" ng-click="Ctrl.active=Ctrl.menuToggle(Ctrl.active,'zoom')" ng-class="{'active-fa':Ctrl.active ==='zoom'}"></i></li>
+          <li><i class="fa fa-search-minus" ng-click="Ctrl.active='zoom'; Ctrl.zoomOut()"></i></li>
+          <li><i class="fa fa-search-plus" ng-click="Ctrl.active='zoom'; Ctrl.zoomIn()"></i></li>
+          <li><i class="fa fa-question" ng-click="Ctrl.active=Ctrl.menuToggle(Ctrl.active,'info')" ng-class="{'active-fa':Ctrl.active ==='info'}"></i></li>
+          <li><i class="fa fa-share" ng-click="Ctrl.active=Ctrl.menuToggle(Ctrl.active,'share')" ng-class="{'active-fa':Ctrl.active ==='share'}"></i></li></li>
+            <li><i class="fa fa-paint-brush end-list" ng-click="Ctrl.active=Ctrl.menuToggle(Ctrl.active,'color')" ng-class="{'active-fa':Ctrl.active ==='color'}"></i></li>
+        </ul>
+         <div class="options-bar-holder" ng-class="{'color-out':Ctrl.active ==='options'}">
+          <form name="optionsForm">
+          <nav class="menu menu--alonso">
+					<ul class="menu__list">
+						<li class="menu__item" ng-class="{'menu__item--current':Ctrl.isActive('mandelbrot','fractal')}" ng-click="Ctrl.setActive('mandelbrot','fractal')"><a href="#" class="menu__link">Mandelbrot</a></li>
+						<li class="menu__item" ng-class="{'menu__item--current':Ctrl.isActive('julia','fractal')}" ng-click="Ctrl.setActive('julia','fractal')"><a href="#" class="menu__link">Julia</a></li>
+			            <li class="menu__line"></li>		
+                    </ul>
+				</nav>
+          <div class="inline-input-holder">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.eqn,'not-valid':!optionsForm.equation.$valid}">
+					<input class="input__field input__field--hoshi" name="equation" type="text" ng-model="Ctrl.data.eqn" equation required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="equation">
+						<span class="input__label-content input__label-content--hoshi">f(z)=</span>
+					</label>
+				</span>
+          </div>
+                   
+
+          <div class="constants-holder" ng-if="Ctrl.isActive('julia','fractal')">
+          <div class="inline-input-holder">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.realC,'not-valid':!optionsForm.real.$valid}">
+					<input class="input__field input__field--hoshi" type="text" name="real" ng-model="Ctrl.data.realC" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="real">
+						<span class="input__label-content input__label-content--hoshi">a</span>
+					</label>
+				</span>
+          
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.imgC,'not-valid':!optionsForm.img.$valid}">
+					<input class="input__field input__field--hoshi" type="text" name="img" ng-model="Ctrl.data.imgC" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">bi</span>
+					</label>
+				</span>
+          
+         
+          </div>
+          </div>
+          <div class="pretty">{{[Ctrl.data.eqn,Ctrl.data.realC,Ctrl.data.imgC,Ctrl.data.type]|tex}}</div>
+          <nav class="menu menu--alonso">
+					<ul class="menu__list">
+						<li class="menu__item" ng-class="{'menu__item--current':Ctrl.isActive('orbit','coloring')}" ng-click="Ctrl.setActive('orbit','coloring')"><a href="#" class="menu__link">Orbit trap</a></li>
+						<li class="menu__item" ng-class="{'menu__item--current':Ctrl.isActive('curvature','coloring')}" ng-click="Ctrl.setActive('curvature','coloring')"><a href="#" class="menu__link">Curvature</a></li>
+					    <li class="menu__item" ng-class="{'menu__item--current':Ctrl.isActive('escape','coloring')}" ng-click="Ctrl.setActive('escape','coloring')"><a href="#" class="menu__link">Escape</a></li>
+					    <li class="menu__line"></li>
+                    </ul>
+				</nav>
+          
+          <div class="inline-input-holder orbit-constants" ng-if="Ctrl.isActive('orbit','coloring')">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.centerX,'not-valid':!optionsForm.centerX.$valid}">
+					<input class="input__field input__field--hoshi" type="number" name="centerX" ng-model="Ctrl.data.centerX" step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">Center X</span>
+					</label>
+				</span>
+       
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.centerY,'not-valid':!optionsForm.centerY.$valid}">
+					<input class="input__field input__field--hoshi" type="number" name="centerY" ng-model="Ctrl.data.centerY" step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">Center Y</span>
+					</label>
+				</span>
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.radius,'not-valid':!optionsForm.radius.$valid}">
+					<input class="input__field input__field--hoshi" type="number" name="radius" ng-model="Ctrl.data.radius" min="0" step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">radius</span>
+					</label>
+				</span>
+          </div>
+
+          <div class="inline-input-holder">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.maxIteration,'not-valid':!optionsForm.maxIteration.$valid}">
+					<input class="input__field input__field--hoshi" type="number" name="maxIteration" ng-model="Ctrl.data.maxIteration" min="1" step="1" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">Max Iteration</span>
+					</label>
+				</span>
+          
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.bailout,'not-valid':!optionsForm.bailout.$valid}" ng-if="!Ctrl.isActive('orbit','coloring')">
+					<input class="input__field input__field--hoshi" type="number" name="bailout" ng-model="Ctrl.data.bailout" min="1" step="1" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">Bailout</span>
+					</label>
+				</span>
+          </div>
+          <div class="calculate-button" ng-click="optionsForm.$valid && Ctrl.fractalize()">Calculate!</div>
+          </form>
+          </div>
+          
+
+          <div class="info-holder" ng-class="{'color-out':Ctrl.active ==='info'}">
+            <div class="info-title">Mandelbrot Vs. Julia</div>
+            <div class="info-text">Are two seemingly similar methods for generating a fractal. Both are recursive with the next step being generated by the previous value. The recursive formulas are given below. Where z denotes your position.</div>
+            <div class="math-inline-holder">
+                <div class="math-holder">
+          <span class="math-title">Mandelbrot</span>
+          $$z_0=0$$ $$c=z$$ $$z_{n+1}=f(z_n)+c$$ 
+          </div>
+          <div class="math-holder">
+          <span  class="math-title">Julia</span>
+          $$z_0=z$$ $$c=\text{chosen constant}$$ $$z_{n+1}=f(z_n)+c$$
+          </div>
+            </div>
+          <div class="info-text">The sequence of $z_n$ for a given z in the plane is called an orbit. There are a number of interesting mathematical relations between the two but for our purposes the only thing that really matters is that points, z, near the edge of Mandelbrot set generate interesting Julia sets for c=z. </div>
+           
+            <div class="info-title">Equations</div>
+            <div class="info-text">Most basic functions will be accepted by the parser. So log, e, sin, cos, tan, etc. The inputs should be in terms of a variable z but the parser will turn anything else into z. Check the output beneath the equation input to make sure you are getting what you think. More complicated functions lead to longer computation times.</div>
+            <div class="info-title">Coloring Methods</div>
+            <div class="info-text">Orbit Trap - Is coloured based on the minimum distance from orbit of to the given circle. Generally results in circular shapes</div>
+            <div class="info-text">Curvature - Is coloured based on an average of the last three iterates before the bailout value is reached. Generally results in banded curves. Works best with a large bailout value.</div>
+            <div class="info-text">Escape - Is coloured based on the number of iterations before the bailout is reached. This is the classic colouring method.</div>
+            <div class="info-title">Max Iteration and Bailout</div>
+            <div class="info-text">Max Iteration is the most number of interations that will appear in a sequence. Needed to make sure the algorithm finishes. Generally the higher the number the more detail an image will have. Also the longer it will take to finish.</div>
+            <div class="info-text">Bailout is the maximum size that an interate $z_n$ can reach before it is considered infinite. Larger bailouts increase computation time but not by much. </div>
+           <div class="info-title">Zoom</div>
+           <div class="info-text">To zoom in on an interesting part of the fractal you can either click and drag on the screen or use the map icon and choose coordinates. You can also you the zoom out and zoom in icons. The more you zoom in the higher the max iteration will need to be to get interesting details. </div>
+           
+           <div class="info-title">Coloring</div>
+           <div class="info-text">Use the histogram to figure out the best coloring. The histogram shows where fractal "exists" in terms of the coloring. Use the sliders to move the endpoints and the midpoint to get more interesting pictures.</div>
+
+
+         
+          </div>
+		
+			            
+         <div class="share-bar-holder" ng-class="{'color-out':Ctrl.active ==='share'}">
+         
+          <ul class="share-buttons">
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.collettjd.com%2Ffractal&t=Fractal%20Maker" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.collettjd.com%2Ffractal&text=Fractal%20Maker:%20http%3A%2F%2Fwww.collettjd.com%2Ffractal" target="_blank" title="Tweet"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+  <li><a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Fwww.collettjd.com%2Ffractal&t=Fractal%20Maker&s=" target="_blank" title="Post to Tumblr"><i class="fa fa-tumblr-square fa-2x"></i></a></li>
+  <li><a href="mailto:?subject=Fractal%20Maker&body=An%20easy%20to%20use%20fractal%20generator%20with%20function%20input%2C%20a%20variety%20of%20coloring%20methods%2C%20and%20zooming%20ability.:%20http%3A%2F%2Fwww.collettjd.com%2Ffractal" target="_blank" title="Email"><i class="fa fa-envelope-square fa-2x"></i></a></li>
+</ul>
+         </div>
+
+          <div class="zoom-bar-holder" ng-class="{'color-out':Ctrl.active ==='zoom'}">
+          <form name="zoomForm">
+          <div class="inline-input-holder">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.x0,'not-valid':!zoomForm.x0.$valid}">
+					<input class="input__field input__field--hoshi" name="x0" type="number" ng-model="Ctrl.data.x0"  step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">x0</span>
+					</label>
+				</span>
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.y0,'not-valid':!zoomForm.y0.$valid}">
+					<input class="input__field input__field--hoshi" name="y0" type="number" ng-model="Ctrl.data.y0"  step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">y0</span>
+					</label>
+				</span>
+          </div>
+          <div class="inline-input-holder">
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.zoomWidth,'not-valid':!zoomForm.zoomWidth.$valid}">
+					<input class="input__field input__field--hoshi" name="zoomWidth" type="number" ng-blur="Ctrl.scaleRatio('width')" ng-model="Ctrl.data.zoomWidth" min="0"  step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">width</span>
+					</label>
+				</span>
+          <span class="input single-line input--hoshi" ng-class="{'input--filled':Ctrl.data.zoomHeight,'not-valid':!zoomForm.zoomHeight.$valid}">
+					<input class="input__field input__field--hoshi" name="zoomHeight" type="number" ng-blur="Ctrl.scaleRatio('height')" ng-model="Ctrl.data.zoomHeight" min="0"  step="any" required/>
+					<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+						<span class="input__label-content input__label-content--hoshi">height</span>
+					</label>
+				</span>
+          </div>
+          <div class="calculate-button" ng-click="zoomForm.$valid && Ctrl.fractalize()">Calculate!</div>
+          </form>
+         </div>
+
+         <div class="color-bar-holder" ng-class="{'color-out':Ctrl.active ==='color'}">
+     <color-gradient-maker coloring="Ctrl.colorObj" fractal="Ctrl.fractal" positions='{"start":0,"middle":450,"end":567}' colorStart=[255,0,0,255] colorMiddle=[0,255,0,255] colorEnd=[0,0,255,255] ></color-gradient-maker>
+         {{Ctrl.colorList[27]}}
+         </div>
+     </div>
+      </div>
+      <!---->
+   
+          <div class="content-right">
+          
+
+
+          <div class="canvas-frame">
+         
+          
+          
+          
+         <div class="fractal-holder">
+          <canvas class="canvas" width="1200" height="800" canvas-zoom canvas-fractal></canvas>
+          <div class="opening-background" ng-if="Ctrl.showStart"></div>
+          <div class="make-fractal" ng-if="Ctrl.showStart" ng-click="Ctrl.active='options'">Make a Fractal</div>
+
+          <div class="my-progress-holder" ng-style="{'background': 'rgba(255,255,255,0.8)'}" ng-if="Ctrl.progress.active==='drawing'">
+              <div class="progress-container Absolute-Center-Draw">
+                <div class="my-progress-title drawing">Drawing</div>
+              </div>
+         </div>
+
+          <div class="my-progress-holder" ng-style="{'backgroundImage': 'url('+Ctrl.progress.progressBackground+')'}" ng-if="Ctrl.progress.active==='calculating'">
+                    
+          <div class="progress-container Absolute-Center">
+          
+          <svg class="loading" id="svg9774"  viewBox="0 0 303.51078 303.51077">
+          <g id="layer1" transform="translate(492.47 127.25)">
+          <circle  id="path10324" cx="-340.71" stroke="rgb(74, 74, 74)" cy="24.505" r="136.76" stroke-width="30" fill="none"/>
+          <circle class="path" ng-style="{'strokeDashoffset': 850-850*Ctrl.progress.dashProgress}" id="path10324" cx="-340.71" stroke="rgb(51, 153, 255)" cy="24.505" r="136.76" stroke-width="30" fill="none"/>
+          </g>
+          
+          </svg> 
+          <div class="my-progress-title">{{Ctrl.progress.progress||'0'}}</div>
+          
+          </div>
+         
+          </div>
+          
+
+          </div>
+          
+          </div>
+          </div>
+</script>
+
+         
+</div>
+  </body>
+</html>

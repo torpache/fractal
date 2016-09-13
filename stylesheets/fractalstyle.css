@@ -1,0 +1,955 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 1:46:54 PM
+    Author     : john
+*/
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12-Sep-2016, 2:26:56 PM
+    Author     : john
+*/
+/* Common styles for all menus */
+.menu {
+  line-height: 1;
+  margin: 0.5em auto 1.5em;
+  font-size: 25px; }
+
+.menu__list {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.menu__item {
+  display: block;
+  margin: 1em 0; }
+
+.menu__link {
+  font-size: 0.9em;
+  font-weight: bold;
+  display: block;
+  padding: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent; }
+
+.menu__link:hover,
+.menu__link:focus {
+  outline: none; }
+
+/* Individual styles */
+/* Alonso */
+.menu--alonso .menu__item {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.menu--alonso .menu__link {
+  width: 180px;
+  height: 1em;
+  text-align: center;
+  color: #fff;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.menu--alonso .menu__link:hover,
+.menu--alonso .menu__link:focus {
+  color: #929292; }
+
+.menu--alonso .menu__item--current .menu__link {
+  color: #3399FF;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s; }
+
+.menu--alonso .menu__line {
+  position: absolute;
+  top: 125%;
+  left: 0;
+  width: 180px;
+  height: 3px;
+  pointer-events: none;
+  border: 1px solid transparent;
+  border-width: 0 22px;
+  background: #3399FF;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22);
+  transition-timing-function: cubic-bezier(1, 0.01, 0, 1.22); }
+
+.menu--alonso .menu__item:nth-child(1).menu__item--current ~ .menu__line {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.menu--alonso .menu__item:nth-child(2).menu__item--current ~ .menu__line {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
+
+.menu--alonso .menu__item:nth-child(3).menu__item--current ~ .menu__line {
+  -webkit-transform: translate3d(200%, 0, 0);
+  transform: translate3d(200%, 0, 0); }
+
+.menu--alonso .menu__item:nth-child(4).menu__item--current ~ .menu__line {
+  -webkit-transform: translate3d(300%, 0, 0);
+  transform: translate3d(300%, 0, 0); }
+
+.menu--alonso .menu__item:nth-child(5).menu__item--current ~ .menu__line {
+  -webkit-transform: translate3d(400%, 0, 0);
+  transform: translate3d(400%, 0, 0); }
+
+@media screen and (max-width: 55em) {
+  .menu--alonso .menu__line {
+    top: 3em; }
+
+  .menu--alonso .menu__item:nth-child(1).menu__item--current ~ .menu__line {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+
+  .menu--alonso .menu__item:nth-child(2).menu__item--current ~ .menu__line {
+    -webkit-transform: translate3d(0, 3em, 0);
+    transform: translate3d(0, 3em, 0); }
+
+  .menu--alonso .menu__item:nth-child(3).menu__item--current ~ .menu__line {
+    -webkit-transform: translate3d(0, 6em, 0);
+    transform: translate3d(0, 6em, 0); }
+
+  .menu--alonso .menu__item:nth-child(4).menu__item--current ~ .menu__line {
+    -webkit-transform: translate3d(0, 9em, 0);
+    transform: translate3d(0, 9em, 0); }
+
+  .menu--alonso .menu__item:nth-child(5).menu__item--current ~ .menu__line {
+    -webkit-transform: translate3d(0, 12em, 0);
+    transform: translate3d(0, 12em, 0); } }
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12-Sep-2016, 2:27:27 PM
+    Author     : john
+*/
+.contact-wrapper {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 950px;
+  width: 100%; }
+
+.input {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: auto;
+  width: calc(100% - 2em);
+  vertical-align: top;
+  padding: 0.25em;
+  font-size: 3em; }
+
+.input__field {
+  position: relative;
+  display: block;
+  float: right;
+  padding: 0.8em;
+  width: 60%;
+  border: none;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: #aaa;
+  font-family: inherit;
+  -webkit-appearance: none;
+  /* for box shadows to show on iOS */ }
+
+.input__field:focus {
+  outline: none; }
+
+.input__label {
+  display: block;
+  float: right;
+  padding: 0 1em;
+  width: 40%;
+  color: white;
+  font-size: 0.6em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.input__label-content {
+  position: relative;
+  display: block;
+  padding: 1.6em 0;
+  width: 100%; }
+
+/* Hoshi */
+.input--hoshi {
+  overflow: hidden; }
+
+.input__field--hoshi {
+  margin-top: 1em;
+  padding: 1.3em 0em;
+  padding-bottom: 0.5em;
+  width: 100%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.5em; }
+
+.input__label--hoshi {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.3em 0.25em;
+  width: 100%;
+  height: calc(100% - 1em);
+  text-align: left;
+  pointer-events: none; }
+
+.single-line {
+  display: block; }
+
+.multiline {
+  max-width: 800px;
+  margin-top: 0.5em;
+  margin-bottom: 1em; }
+
+.input__label-content--hoshi {
+  position: absolute;
+  transition: color 0.3s; }
+
+.input__label--hoshi::before,
+.input__label--hoshi::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 10px);
+  border-bottom: 3px solid #B9C1CA; }
+
+.input__label--hoshi::after, .submit::after {
+  margin-top: 0px;
+  border-bottom: 4px solid #3399ff;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: border-color 0.3s; }
+
+.input__field--hoshi:focus + .input__label--hoshi::after,
+.input--filled .input__label--hoshi::after {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+ng-pristine.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+ng-pristine.input--filled .input__label-content--hoshi {
+  -webkit-animation: anim-1 0.3s forwards;
+  animation: anim-1 0.3s forwards; }
+
+.not-valid .input__label--hoshi::after {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  border-bottom-color: #ff0000; }
+
+.not-valid .input__label-content--hoshi {
+  opacity: 1;
+  -webkit-transform: translate3d(0, -40%, 0);
+  transform: translate3d(0, -40%, 0);
+  color: #ff0000; }
+
+.input__label-content--hoshi {
+  opacity: 1;
+  -webkit-transform: translate3d(0, -40%, 0);
+  transform: translate3d(0, -40%, 0);
+  color: #3399ff; }
+
+@-webkit-keyframes anim-1 {
+  50% {
+    opacity: 0;
+    -webkit-transform: translate3d(1em, 0, 0);
+    transform: translate3d(1em, 0, 0); }
+  51% {
+    opacity: 0;
+    -webkit-transform: translate3d(-1em, -40%, 0);
+    transform: translate3d(-1em, -40%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -40%, 0);
+    transform: translate3d(0, -40%, 0); } }
+@keyframes anim-1 {
+  50% {
+    opacity: 0;
+    -webkit-transform: translate3d(1em, 0, 0);
+    transform: translate3d(1em, 0, 0); }
+  51% {
+    opacity: 0;
+    -webkit-transform: translate3d(-1em, -40%, 0);
+    transform: translate3d(-1em, -40%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -40%, 0);
+    transform: translate3d(0, -40%, 0);
+    color: #3399ff; } }
+@media (min-width: 550px) {
+  .contact-wrapper {
+    width: 80%; }
+
+  textarea#input-6 {
+    font-size: 50%;
+    margin-top: 1em;
+    padding: 1.3em 0em;
+    padding-bottom: 0.5em; } }
+@media (min-width: 950px) {
+  .contact-wrapper {
+    width: 100%; }
+
+  .single-line {
+    display: inline-block;
+    max-width: 205px;
+    margin-right: 25px;
+    margin-left: 25px; }
+
+  textarea#input-6 {
+    font-size: 70%; }
+
+  .submit-holder:hover::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 11:54:55 AM
+    Author     : john
+*/
+.angular-color-picker {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: inline-block;
+  z-index: 1; }
+
+.angular-color-picker > ._variations {
+  border: 1px solid #808080;
+  width: 200px;
+  height: 200px;
+  float: left;
+  transition: background-color 250ms; }
+
+.angular-color-picker > ._variations > ._whites {
+  width: 200px;
+  height: 200px;
+  background: -webkit-linear-gradient(left, #fff 0, transparent 100%);
+  background: -moz-linear-gradient(left, #fff 0, transparent 100%);
+  background: -ms-linear-gradient(left, #fff 0, transparent 100%);
+  background: linear-gradient(to right, #fff 0, transparent 100%);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#00ffffff', GradientType='1')"; }
+
+.angular-color-picker > ._variations > ._whites > ._blacks {
+  width: 200px;
+  height: 200px;
+  background: -webkit-linear-gradient(top, transparent 0, #000 100%);
+  background: -moz-linear-gradient(top, transparent 0, #000 100%);
+  background: -ms-linear-gradient(top, transparent 0, #000 100%);
+  background: linear-gradient(to bottom, transparent 0, #000 100%);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#ff000000')";
+  position: relative; }
+
+.angular-color-picker > ._variations > ._whites > ._blacks > ._cursor {
+  position: absolute;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #fff;
+  border-right-color: #000;
+  border-left-color: #000;
+  border-radius: 5px; }
+
+.angular-color-picker > ._variations > ._whites > ._blacks > ._mouse-trap {
+  width: 200px;
+  height: 200px; }
+
+.angular-color-picker > ._hues {
+  border: 1px solid #808080;
+  position: relative;
+  margin-left: 210px;
+  height: 200px;
+  width: 30px;
+  background: -webkit-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+  background: -moz-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+  background: -ms-linear-gradient(top, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+  background: linear-gradient(to bottom, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%); }
+
+.angular-color-picker > ._hues > ._cursor {
+  position: absolute;
+  left: -7px;
+  width: 33px;
+  height: 0;
+  border: 5px solid transparent;
+  border-left-color: #808080;
+  border-right-color: #808080; }
+
+.angular-color-picker > ._hues > ._mouse-trap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 200px; }
+
+.angular-color-picker > ._transparencies {
+  border: 1px solid #808080;
+  position: relative;
+  margin-top: 10px;
+  height: 30px;
+  width: 200px;
+  background: #F0F0F0; }
+
+.angular-color-picker > ._transparencies > ._cursor {
+  position: absolute;
+  transform: rotate(90deg);
+  left: -18px;
+  top: 11px;
+  width: 34px;
+  height: 0px;
+  border: 5px solid transparent;
+  border-left-color: #808080;
+  border-right-color: #808080; }
+
+.angular-color-picker > ._transparencies > ._mouse-trap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 30px; }
+
+/* Heavily based on: http://jsfiddle.net/bgrins/Whc6Z/ */
+.angular-color-picker > ._hues > ._ie-1 {
+  height: 17%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#ffff00')"; }
+
+.angular-color-picker > ._hues > ._ie-2 {
+  height: 16%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#00ff00')"; }
+
+.angular-color-picker > ._hues > ._ie-3 {
+  height: 17%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff00', endColorstr='#00ffff')"; }
+
+.angular-color-picker > ._hues > ._ie-4 {
+  height: 17%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffff', endColorstr='#0000ff')"; }
+
+.angular-color-picker > ._hues > ._ie-5 {
+  height: 16%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000ff', endColorstr='#ff00ff')"; }
+
+.angular-color-picker > ._hues > ._ie-6 {
+  height: 17%;
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00ff', endColorstr='#ff0000')"; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 11:45:30 AM
+    Author     : john
+*/
+.color-box {
+  height: 30px;
+  width: 33.3%;
+  position: relative;
+  background: inherit;
+  float: left; }
+
+.color-box-inset {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 5px;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.color-box-color {
+  left: 5px; }
+
+.angular-color-picker {
+  position: absolute;
+  bottom: 90%; }
+
+.color-box-color-picker {
+  left: 0%; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 12:02:36 PM
+    Author     : john
+*/
+.color-grad {
+  float: left;
+  width: 90%; }
+
+.color-grad-histogram {
+  width: 90%;
+  margin-left: 3%;
+  height: 40px; }
+
+.color-grad-mini-canvas {
+  width: 90%;
+  margin-left: 3%;
+  height: 30px;
+  border-radius: 15px; }
+
+.color-grad-color-box-holder {
+  height: 40px;
+  width: 90%;
+  margin-left: 3%;
+  margin-top: 5px; }
+
+.color-grad-arrow-right {
+  position: absolute;
+  top: 23%;
+  left: 43%;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #3399FF;
+  transition: border 0.3s; }
+
+.color-grad-color-button {
+  float: left;
+  width: 10%;
+  margin-top: 5%;
+  padding-bottom: 10%;
+  margin-left: -2%;
+  /* height: 145px; */
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer; }
+
+.color-grad-color-button:hover .color-grad-arrow-right {
+  border-left: 20px solid #2161a0; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 11:55:47 AM
+    Author     : john
+*/
+.slider-holder {
+  width: 90%;
+  margin-left: 3%;
+  position: relative;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+
+.slider-slide {
+  width: 100%;
+  height: 15px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 3px;
+  margin-bottom: 3px; }
+
+.slider-cursor {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #3399FF; }
+
+.slider-endcursor {
+  position: absolute;
+  top: -4px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #BDBDBD; }
+
+.slider-begin {
+  left: 0; }
+
+.slider-end {
+  left: -webkit-calc(100% - 23px);
+  left: -moz-calc(100% - 23px);
+  left: calc(100% - 23px); }
+
+.slider-mouse-trap-slide {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: -webkit-calc(100% - 46px);
+  width: -moz-calc(100% - 46px);
+  width: calc(100% - 46px);
+  height: 15px;
+  cursor: pointer; }
+
+.slider-mouse-trap-begin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 23px;
+  height: 15px;
+  cursor: pointer; }
+
+.slider-mouse-trap-end {
+  position: absolute;
+  top: 0;
+  left: -webkit-calc(100% - 23px);
+  left: -moz-calc(100% - 23px);
+  left: calc(100% - 23px);
+  width: 23px;
+  height: 15px;
+  cursor: pointer; }
+
+.large-screen {
+  display: none; }
+
+.small-screen {
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+  padding: 1em;
+  text-align: center;
+  display: block; }
+
+@media (min-width: 850px) {
+  .large-screen {
+    display: block; }
+
+  .small-screen {
+    display: none; } }
+body {
+  margin: 0px;
+  font-family: 'Lato', sans-serif; }
+
+.canvas-frame {
+  width: 100%;
+  margin: auto; }
+
+.fractal-holder {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.pretty {
+  font-size: 20px; }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+.my-progress-holder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.71);
+  background-blend-mode: lighten;
+  background-size: 100% 100%;
+  top: 0; }
+
+.Absolute-Center, .Absolute-Center-Draw {
+  height: 250px;
+  width: 250px;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; }
+
+.Absolute-Center-Draw {
+  width: 300px; }
+
+.my-progress-title {
+  position: absolute;
+  top: calc(50% - 48px);
+  width: 100%;
+  font-size: 5em;
+  text-align: center;
+  color: #3399FF; }
+
+.make-fractal {
+  position: absolute;
+  font-size: 40px;
+  /* border: solid blue 5px; */
+  top: calc(50% - 47px);
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 20px;
+  color: black;
+  left: calc(50% - 140px);
+  border: solid 3px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-out, color 0.5s ease-out; }
+
+.make-fractal:hover {
+  color: White;
+  background-color: rgba(0, 0, 0, 0.75); }
+
+.opening-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/mandelside.png);
+  background-repeat: no-repeat;
+  background-position: right center; }
+
+.menu-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  background: black;
+  height: 100%;
+  color: white;
+  z-index: 2; }
+
+.menu-left > ul {
+  list-style: none;
+  padding: 0px;
+  height: 100%;
+  background: inherit; }
+
+i {
+  cursor: pointer; }
+
+.end-list {
+  position: absolute;
+  bottom: 20px; }
+
+.fa {
+  color: white;
+  font-size: 30px;
+  margin: 25px;
+  margin-left: 33px; }
+
+.fa:hover {
+  color: #7abafa; }
+
+.active-fa {
+  color: #3399FF; }
+
+.content-right {
+  margin-left: 100px; }
+
+.options-bar-holder {
+  font-size: 0.8em;
+  position: absolute;
+  top: 0px;
+  left: -800px;
+  width: 800px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.71);
+  color: white;
+  transition: left ease 0.5s; }
+
+.info-holder {
+  position: absolute;
+  top: 0px;
+  left: -1000px;
+  width: 1000px;
+  height: 100%;
+  overflow-y: auto;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.71);
+  color: white;
+  transition: left ease 0.5s;
+  text-align: center; }
+
+.info-title {
+  font-size: 3em;
+  padding: 0.5em;
+  color: #3399FF; }
+
+.info-text {
+  font-size: 1.3em;
+  padding: 0.25em;
+  max-width: 800px;
+  margin: auto; }
+
+.math-holder {
+  display: inline-block;
+  padding: 2em;
+  font-size: 1.3em; }
+
+span.math-title {
+  color: #3490EC;
+  font-size: 1.5em; }
+
+.share-bar-holder {
+  position: absolute;
+  top: 415px;
+  left: -700px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background: rgba(0, 0, 0, 0.71);
+  color: white;
+  transition: left ease 0.5s; }
+
+ul.share-buttons {
+  list-style: none;
+  padding: 0; }
+
+ul.share-buttons li {
+  display: inline; }
+
+ul.share-buttons li i {
+  font-size: 40px;
+  margin: 10px; }
+
+.zoom-bar-holder {
+  position: absolute;
+  top: 100px;
+  left: -700px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  font-size: 0.8em;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background: rgba(0, 0, 0, 0.71);
+  color: white;
+  transition: left ease 0.5s; }
+
+.color-bar-holder {
+  position: absolute;
+  bottom: 20px;
+  left: -700px;
+  width: 700px;
+  z-index: -1;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background: rgba(0, 0, 0, 0.71);
+  padding: 1.5em;
+  padding-left: 0;
+  transition: left ease 0.5s; }
+
+.color-out {
+  left: 100px; }
+
+.loading {
+  width: 100%;
+  height: 100%; }
+
+.calculate-button {
+  display: block;
+  position: relative;
+  width: 120px;
+  padding: 0.5em;
+  font-size: 2em;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  outline: 0px;
+  border: 0px;
+  border-bottom: solid #B9C1CA 4px;
+  cursor: pointer;
+  transition: color 0.3s; }
+
+.calculate-button::after {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  height: 4px;
+  background: #3399FF;
+  content: '';
+  width: 0px;
+  transition: width 0.3s, left 0.3s; }
+
+.calculate-button:hover {
+  color: #3399FF; }
+
+.calculate-button:hover::after {
+  width: 100%;
+  left: 0%; }
+
+.path {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 850px;
+  stroke-dashoffset: 850px; }
+
+.path-animate {
+  animation: draw 2s forwards; }
+
+form {
+  display: inherit;
+  flex-direction: inherit;
+  margin-top: 10px; }
+
+input[type="number"] {
+  -moz-appearance: textfield; }
+
+.inline-input-holder {
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.orbit-constants span.input.single-line {
+  width: 150px; }
+
+@keyframes draw {
+  100% {
+    stroke-dashoffset: 0; } }
+
+/*# sourceMappingURL=fractalstyle.css.map */

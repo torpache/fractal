@@ -1,0 +1,227 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12-Sep-2016, 2:27:27 PM
+    Author     : john
+*/
+
+.contact-wrapper {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 950px;
+  width: 100%;
+}
+.input {
+	position: relative;
+	z-index: 1;
+	display: block;
+        margin: auto;
+	width: calc(100% - 2em);
+	vertical-align: top;
+      padding: 0.25em;
+    font-size: 3em;
+}
+
+.input__field {
+	position: relative;
+	display: block;
+	float: right;
+	padding: 0.8em;
+	width: 60%;
+	border: none;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #aaa;
+	font-family: inherit;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__label {
+	display: block;
+	float: right;
+	padding: 0 1em;
+	width: 40%;
+	color:white;
+	font-size: 0.6em;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input__label-content {
+	position: relative;
+	display: block;
+	padding: 1.6em 0;
+	width: 100%;
+}
+/* Hoshi */
+.input--hoshi {
+	overflow: hidden;
+}
+
+.input__field--hoshi {
+	  margin-top: 1em;
+  padding: 1.3em 0em;
+    padding-bottom: 0.5em;
+  width: 100%;
+  background: transparent;
+  color:rgba(255, 255, 255, 0.80);
+  font-size: 0.5em;
+}
+
+.input__label--hoshi {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0.3em 0.25em;
+	width: 100%;
+	height: calc(100% - 1em);
+	text-align: left;
+	pointer-events: none;
+}
+.single-line{
+    display: block;
+}
+.multiline {
+max-width: 800px;
+  margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+.input__label-content--hoshi {
+	position: absolute;
+    transition: color 0.3s;
+}
+
+.input__label--hoshi::before,
+.input__label--hoshi::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(100% - 10px);
+	border-bottom: 3px solid #B9C1CA;
+}
+
+.input__label--hoshi::after, .submit::after {
+	margin-top: 0px;
+	border-bottom: 4px solid hsl(210, 100%, 60%);
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+    
+    transition: border-color 0.3s;
+}
+
+.input__field--hoshi:focus + .input__label--hoshi::after,
+.input--filled .input__label--hoshi::after {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+ng-pristine.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi,
+ng-pristine.input--filled .input__label-content--hoshi {
+	-webkit-animation: anim-1 0.3s forwards;
+	animation: anim-1 0.3s forwards;
+}
+
+.not-valid .input__label--hoshi::after {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+    border-bottom-color: #ff0000
+}
+
+.not-valid .input__label-content--hoshi {
+	opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+        color: #ff0000;
+}
+.input__label-content--hoshi {
+	opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+         color: hsl(210, 100%, 60%);
+}
+@-webkit-keyframes anim-1 {
+	50% {
+		opacity: 0;
+		-webkit-transform: translate3d(1em, 0, 0);
+		transform: translate3d(1em, 0, 0);
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translate3d(-1em, -40%, 0);
+		transform: translate3d(-1em, -40%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+	}
+}
+
+@keyframes anim-1 {
+	50% {
+		opacity: 0;
+		-webkit-transform: translate3d(1em, 0, 0);
+		transform: translate3d(1em, 0, 0);
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translate3d(-1em, -40%, 0);
+		transform: translate3d(-1em, -40%, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, -40%, 0);
+		transform: translate3d(0, -40%, 0);
+        color: hsl(210, 100%, 60%);
+	}
+}
+
+
+
+@media(min-width:550px){
+   .contact-wrapper{
+    width:80%;
+    }
+.input{
+    }
+textarea#input-6 {
+  font-size: 50%;
+      margin-top: 1em;
+    padding: 1.3em 0em;
+  padding-bottom: 0.5em;
+}
+    }
+@media(min-width:950px){
+    .contact-wrapper{
+    width:100%;
+    }
+    .single-line{
+    display: inline-block;
+        max-width: 205px;
+    margin-right: 25px;
+    margin-left:25px;
+}
+textarea#input-6 {
+  font-size: 70%;
+}
+.submit-holder:hover::after {
+    -webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+    }

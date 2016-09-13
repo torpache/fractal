@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9-Sep-2016, 11:45:30 AM
+    Author     : john
+*/
+
+ .color-box {
+          height: 30px;
+          width: 33.3%;
+          position: relative;
+          background: inherit;
+          float: left;
+          }
+          .color-box-inset {
+          height: 30px;
+          width: 30px;
+          position: absolute;
+          top: 5px;
+          border-radius: 50%;
+          cursor: pointer;
+          }
+          .color-box-color {
+          left: 5px;
+          }
+          .angular-color-picker {
+              position: absolute;
+                  bottom: 90%;
+          }
+          .color-box-color-picker {
+          left: 0%;
+          }
